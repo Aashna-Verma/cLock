@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useSettings } from "@/context/SettingsContext";
 
 function FlipClock() {
+  const { settings, updateSettings } = useSettings();
+  const { is24Hour, showSeconds } = settings.flipClock;
+
   const [time, setTime] = useState(() => {
     const now = new Date();
     return {
@@ -25,11 +29,11 @@ function FlipClock() {
 
   return (
     <div className="relative font-mono flex gap-10 items-center justify-center w-fit">
-      <DoubleDigit digit={time.hours} />
+      <DoubleDigit digit={is24Hour ? time.hours : ((time.hours % 12) || 12)} />
       <DoubleDigit digit={time.minutes} />
 
-      <AMPMIndicator hours={time.hours} />
-      <SecondsDisplay seconds={time.seconds} />
+      {!is24Hour && <AMPMIndicator hours={time.hours} />}
+      {showSeconds && <SecondsDisplay seconds={time.seconds} />}
     </div>
   );
 }
