@@ -1,36 +1,63 @@
 import { AlarmClockIcon, CalendarRangeIcon, ListTodoIcon, Settings2Icon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Toggle } from "@/components/ui/toggle"
+import ClockSettings from "./clock-settings";
+import { useState } from "react";
 
 function NavBar() {
+  const [isUserSettingsOpen, setIsUserSettingsOpen] = useState(false);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [isTodoOpen, setIsTodoOpen] = useState(false);
+  const [isClockOpen, setIsClockOpen] = useState(false);
+
   return (
-    <nav className="fixed bottom-0 w-full flex justify-between px-4 py-2">
-      <div id="user-preferences" className="min-w-36 flex items-center gap-3">
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+    <>
+      <nav className="fixed bottom-0 w-full flex justify-between px-4 py-2">
+        <div id="user-preferences" className="min-w-36 flex items-center gap-3">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
 
-        <Toggle value="underline" aria-label="Toggle underline">
-          <Settings2Icon className="size-7" />
-        </Toggle>
+          <Toggle pressed={isUserSettingsOpen} onPressedChange={setIsUserSettingsOpen} aria-label="Toggle user settings">
+            <Settings2Icon className="size-7" />
+          </Toggle>
 
-      </div>
+        </div>
 
-      <div id="apps" className="flex items-center gap-3">
-        <Toggle value="bold" aria-label="Toggle bold">
-          <CalendarRangeIcon className="size-7" />
-        </Toggle>
-        <Toggle value="italic" aria-label="Toggle italic">
-          <ListTodoIcon className="size-7" />
-        </Toggle>
-        <Toggle value="underline" aria-label="Toggle underline">
-          <AlarmClockIcon className="size-7" />
-        </Toggle>
-      </div>
+        <div id="apps" className="flex items-center gap-3">
+          <Toggle pressed={isCalendarOpen} onPressedChange={setIsCalendarOpen} aria-label="Toggle calendar settings">
+            <CalendarRangeIcon className="size-7" />
+          </Toggle>
+          <Toggle pressed={isTodoOpen} onPressedChange={setIsTodoOpen} aria-label="Toggle toto settings">
+            <ListTodoIcon className="size-7" />
+          </Toggle>
+          <Toggle pressed={isClockOpen} onPressedChange={setIsClockOpen} aria-label="Toggle clock settings" >
+            <AlarmClockIcon className="size-7" />
+          </Toggle>
+        </div>
 
-      <div className="min-w-36"></div>
-    </nav>
+        <div className="min-w-36"></div>
+      </nav>
+
+      {isUserSettingsOpen && (
+        <ClockSettings onClose={() => setIsUserSettingsOpen(false)} />
+      )}
+
+      {isCalendarOpen && (
+        <ClockSettings onClose={() => setIsCalendarOpen(false)} />
+      )}
+
+      {isTodoOpen && (
+        <ClockSettings onClose={() => setIsTodoOpen(false)} />
+      )}
+
+      {isClockOpen && (
+        <ClockSettings onClose={() => setIsClockOpen(false)} />
+      )}
+
+
+    </>
   )
 }
 

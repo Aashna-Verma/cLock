@@ -13,7 +13,7 @@ function Background() {
   });
 
   return (
-    <div className="fixed inset-0 -z-50 w-full h-full">
+    <div className="fixed inset-0 -z-50 w-screen h-screen">
       <div
         id="background"
         className="w-full h-full before:mix-blend-soft-light"
