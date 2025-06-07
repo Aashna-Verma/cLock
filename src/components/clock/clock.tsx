@@ -1,7 +1,7 @@
 import { useSettings } from "@/context/SettingsContext";
-import FlipClock from "@/components/flipclock";
-import Pomodoro from "@/components/pomodoro";
-import Stopwatch from "@/components/stopwatch";
+import FlipClock from "@/components/clock/flipclock";
+import Pomodoro from "@/components/clock/pomodoro";
+import Stopwatch from "@/components/clock/stopwatch";
 
 function Clock() {
   const { settings } = useSettings();

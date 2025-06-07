@@ -2,7 +2,7 @@ import Background from "@/components/background"
 import NavBar from "@/components/nav-bar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SettingsProvider } from "@/context/SettingsContext"
-import Clock from "@/components/clock"
+import Clock from "@/components/clock/clock"
 
 function App() {
 

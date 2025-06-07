@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import { XIcon } from "lucide-react";
 
 const windowStyles = cva(
-  `rounded shadow-lg backdrop-blur-2xl bg-pink-900/40 border overflow-hidden`,
+  `rounded-md shadow-lg backdrop-blur-2xl bg-pink-900/40 border overflow-hidden`,
   {
     variants: {
       focused: {

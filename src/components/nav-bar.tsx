@@ -1,7 +1,7 @@
 import { AlarmClockIcon, CalendarRangeIcon, ListTodoIcon, Settings2Icon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Toggle } from "@/components/ui/toggle"
-import ClockSettings from "./clock-settings";
+import ClockSettings from "./clock/clock-settings";
 import { useState } from "react";
 
 function NavBar() {
